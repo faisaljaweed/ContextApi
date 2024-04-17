@@ -1,13 +1,17 @@
 import './App.css'
-import Cart from './components/Cart'
-import Counter from './components/Counter'
+import LoginClassForm from './components/LoginClassForm'
+import { LoginForm } from './components/LoginForm'
+import Todos from './components/Todos'
 
 function App() {
 
   return (
     <>
-      <Counter />
-      <Cart />
+      <Todos />
+      <LoginForm />
+      <div className='mt-20'>
+        <LoginClassForm />
+      </div>
     </>
   )
 }

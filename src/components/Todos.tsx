@@ -15,14 +15,18 @@ const Todos = () => {
       id: 3,
     },
   ]);
-  const deleteItem = () => {
+  const deleteItem = (itemId: number) => {
     // which item should we delete? How to know that?
-    setTodos(todos);
+    setTodos(todos.filter(itemEl => {
+      return itemEl.id !== itemId
+    }));
   }
   return (
     <ul>
       {todos.map((todoItem) => {
-        return <li onClick={deleteItem} key={todoItem.id}>
+        return <li onClick={() => {
+          deleteItem(todoItem.id);
+        }} key={todoItem.id}>
           {todoItem.text}
         </li>
       })}
