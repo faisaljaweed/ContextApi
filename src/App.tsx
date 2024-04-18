@@ -1,17 +1,16 @@
 import './App.css'
-import LoginClassForm from './components/LoginClassForm'
-import { LoginForm } from './components/LoginForm'
 import Todos from './components/Todos'
+import WelcomeMessage from './components/WelcomeMessage'
 
 function App() {
 
   return (
     <>
       <Todos />
-      <LoginForm />
-      <div className='mt-20'>
-        <LoginClassForm />
-      </div>
+      <WelcomeMessage user={{
+        name: 'Ahsan',
+        type: 'admin'
+      }} isLoggedIn={true}/> 
     </>
   )
 }
