@@ -1,10 +1,10 @@
 import './App.css'
-import { LoginForm } from './components/LoginForm';
+import Counter from './components/Counter'
 
 function App() {
   return (
     <>
-      <LoginForm />
+      <Counter />
     </>
   )
 }

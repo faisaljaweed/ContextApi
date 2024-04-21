@@ -1,25 +1,35 @@
-import { SyntheticEvent, useState } from "react";
- 
+import { SyntheticEvent } from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+
 export const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const email = '';
+  const password = ''; 
   const submitForm = (ev: SyntheticEvent) => {
     ev.preventDefault();
     const target = ev.target as HTMLFormElement;
     console.log(target, {
       email,
-      password
+      password,
     });
-  }
+  };
   return (
     <form className="flex flex-col gap-4" onSubmit={submitForm}>
-      <input onChange={(ev) => {
-        setEmail(ev.target.value);
-      }} value={email} type="email" placeholder="Enter your email" />
-      <input onChange={(ev) => {
-        setPassword(ev.target.value);
-      }} value={password} type="password" placeholder="Enter your password"/>
-      <button>Submit</button>
+      <TextField
+        value={email}
+        id="outlined-basic"
+        label="Email"
+        placeholder="Enter your email"
+        variant="outlined"
+      />
+      <TextField
+        value={password}
+        type="password"
+        label="Password"
+        placeholder="Enter your password"
+        variant="outlined"
+      />
+      <Button type="submit" variant="contained">Submit</Button>
     </form>
-  )
-}
+  );
+};

@@ -29,23 +29,20 @@ const Todos = () => {
     },
   ]);
   const deleteItem = (itemId: number) => {
-    setTodos(
-      todos.filter((itemEl) => {
-        return itemEl.id !== itemId;
-      })
-    );
+    const index = todos.findIndex(itemEl => itemEl.id === itemId);
+    if (index === -1) {
+      return;
+    }
+    todos.splice(index, 1);
+    setTodos(todos);
   };
 
   const addNewTodo = () => {
-    setTodos((todos) => {
-      return [
-        {
-          text: "new Todo",
-          id: Date.now(),
-        },
-        ...todos,
-      ];
+    todos.unshift({
+      text: "new Todo",
+      id: Date.now(),
     });
+    setTodos(todos);
   };
 
   return (
