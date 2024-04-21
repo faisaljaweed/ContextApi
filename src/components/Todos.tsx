@@ -36,24 +36,23 @@ const Todos = () => {
     );
   };
 
-  // TODO: Uncomment me
-  // const addNewTodo = () => {
-  //   setTodos((todos) => {
-  //     return [
-  //       {
-  //         text: "new Todo",
-  //         id: Date.now(),
-  //       },
-  //       ...todos,
-  //     ];
-  //   });
-  // };
+  const addNewTodo = () => {
+    setTodos((todos) => {
+      return [
+        {
+          text: "new Todo",
+          id: Date.now(),
+        },
+        ...todos,
+      ];
+    });
+  };
 
   return (
     <ul>
-      {/* <li>
+      <li>
         <button onClick={addNewTodo}>Click me to add new todo</button>
-      </li> */}
+      </li>
       {todos.map((todoItem) => {
         return (
           <TodoItem key={todoItem.id} item={todoItem} onDelete={deleteItem} />

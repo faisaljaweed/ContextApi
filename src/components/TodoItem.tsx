@@ -5,16 +5,19 @@ type Todo = {
   id: number;
 };
 
-type TodoItemProps = { item: Todo; onDelete: (itemId: number) => void };
+type TodoItemProps = { 
+  item: Todo; 
+  onDelete: (itemId: number) => void
+};
 
 const TodoItem: FC<TodoItemProps> = ({ item, onDelete }) => {
   useEffect(() => {
     console.log(`component rendered for item ${item.id}`);
 
     return () => {
-      console.log(`component removed for item ${item.id}`)
-    }
-  }, [])
+      console.log(`component removed for item ${item.id}`);
+    };
+  }, []);
   return (
     <li
       onClick={() => {
