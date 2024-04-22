@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TodoItem from "./TodoItem";
+import { Button } from "@mui/material";
 
 const Todos = () => {
   const [todos, setTodos] = useState([
@@ -28,25 +29,36 @@ const Todos = () => {
       id: 6,
     },
   ]);
+  const [person, setPerson] = useState({
+    name: 'Ahsan',
+    designation: 'Software Architect'
+  })
   const deleteItem = (itemId: number) => {
-    const index = todos.findIndex(itemEl => itemEl.id === itemId);
-    if (index === -1) {
-      return;
-    }
-    todos.splice(index, 1);
-    setTodos(todos);
+    const filteredTodos = todos.filter(
+      todo => todo.id !== itemId
+    );
+    setTodos(filteredTodos);
   };
 
   const addNewTodo = () => {
-    todos.unshift({
-      text: "new Todo",
-      id: Date.now(),
-    });
-    setTodos(todos);
+    setTodos([
+      {
+        text: "new Todo",
+        id: Date.now(),
+      },
+      ...todos,
+    ]);
   };
 
   return (
     <ul>
+      <Button onClick={() => {
+        setPerson({
+          ...person,
+          name: 'Muhammad Ahsan'
+        })
+      }}>Update name</Button>
+      {JSON.stringify(person)}
       <li>
         <button onClick={addNewTodo}>Click me to add new todo</button>
       </li>

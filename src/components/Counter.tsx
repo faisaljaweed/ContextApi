@@ -1,18 +1,20 @@
 import { Button } from "@mui/material";
+import { useState } from "react";
 
 const Counter = () => {
-  let counterValue = 10;
+  const [counterValue, setCounterValue] = useState(10);
+  const [toggleInp, setToggleInp] = useState(false);
 
   const increment = () => {
-    counterValue++;
+    setCounterValue((currValue) => currValue + 1)
   } 
   
   const decrement = () => {
-    counterValue--;
-
+    setCounterValue((currValue) => currValue - 1)
   }
   const reset = () => {
-    counterValue = 0
+    setCounterValue(0);
+
   }
   return <section className="mb-10 flex flex-col">
     <h2 className="text-2xl">Count is</h2>
@@ -23,6 +25,14 @@ const Counter = () => {
     </div>
     <div className="flex justify-center">
       <Button onClick={reset}>Reset</Button>
+    </div>
+    <div className="flex justify-center">
+      {`toggleInpt is: ${toggleInp}`}
+      <Button onClick={() => {
+        setToggleInp((val) => {
+          return !val;
+        })
+      }}>Reset</Button>
     </div>
   </section>
 }
